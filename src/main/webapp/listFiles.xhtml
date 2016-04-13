@@ -11,13 +11,13 @@
         
         <p>Listado de archivos:</p>
         
-        <ui:repeat var="file" value="#{listFilesMB.files}" >
-            <p:commandLink value="#{file.name}" actionListener="" ajax="false">
-                <p:fileDownload value="" />
-            </p:commandLink> <br/>
-        </ui:repeat>
-        
-        
+        <h:form>
+            <ui:repeat var="file" value="#{listFilesMB.files}" varStatus="status" >
+                <p:commandLink value="#{file.name}" actionListener="#{listFilesMB.preprocess(status.index)}" ajax="false">
+                    <p:fileDownload value="#{listFilesMB.content}" />
+                </p:commandLink> <br/>
+            </ui:repeat>
+        </h:form>
     </h:body>
 </html>
 

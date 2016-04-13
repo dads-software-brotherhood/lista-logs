@@ -1,6 +1,7 @@
 package org.dspace.listalogs.service;
 
 import java.io.File;
+import java.io.InputStream;
 
 /**
  *
@@ -12,5 +13,5 @@ public interface ListFilesService {
     
     File[] getFileList(File dir);
     
-    byte[] getContent(File file);
+    InputStream getContent(File file);
 }

@@ -35,7 +35,7 @@ public class IndexMB implements Serializable {
             File file;
             
             for (String tmpPath : tmp) {
-                file = new File(tmpPath);
+                file = new File(tmpPath.trim());
                 
                 if (file.exists()) {
                     paths.add(tmpPath);

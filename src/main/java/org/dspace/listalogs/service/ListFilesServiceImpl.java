@@ -1,7 +1,9 @@
 package org.dspace.listalogs.service;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.dspace.listalogs.tools.FileTools;
@@ -35,13 +37,14 @@ public class ListFilesServiceImpl implements ListFilesService {
     }
 
     @Override
-    public byte[] getContent(File file) {
+    public InputStream getContent(File file) {
         try {
-            return FileTools.getContent(file);
+            byte[] tmp = FileTools.getContent(file);
+            return new ByteArrayInputStream(tmp);
         } catch (IOException ex) {
             Logger.getLogger(ListFilesServiceImpl.class.getName()).log(Level.SEVERE, "", ex);
         }
 
-        return new byte[0];
+        return null;
     }
 }
