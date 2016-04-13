@@ -1,6 +1,7 @@
 package org.dspace.listalogs.service;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -8,9 +9,10 @@ import java.io.File;
  */
 public interface ListFilesService {
     
-    File[] getDirectoryList(File dir);
+    File[] getDirectoryList(File dir) throws IOException;
     
-    File[] getFileList(File dir);
+    File[] getFileList(File dir) throws IOException;
     
-    byte[] getContent(File file);
+    byte[] getContent(File file) throws IOException;
+    
 }
