@@ -1,10 +1,7 @@
 package org.dspace.listalogs.view;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -19,10 +16,12 @@ import org.dspace.listalogs.service.ListFilesServiceImpl;
 @ManagedBean
 @ViewScoped
 public class ListFilesMB implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     private File dir;
     
-    private ListFilesService listFilesService = new ListFilesServiceImpl();
+    private final ListFilesService listFilesService = new ListFilesServiceImpl();
     
     @PostConstruct
     protected void init() {
@@ -35,12 +34,6 @@ public class ListFilesMB implements Serializable {
     }
     
     public File[] getFiles() {
-        try {
-            return listFilesService.getFileList(dir);
-        } catch (IOException ex) {
-            Logger.getLogger(ListFilesMB.class.getName()).log(Level.SEVERE, "Error al recuperar archivos", ex);
-            return new File[0];
-        }
+        return listFilesService.getFileList(dir);
     }
-    
 }
